@@ -2,16 +2,22 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\ProductCategory;
 
 class ProductCategorySeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
-        //
+        $categories = [
+            ['code' => 'RAW', 'name' => 'Bahan Baku', 'description' => 'Bahan baku produksi'],
+            ['code' => 'PACK', 'name' => 'Kemasan', 'description' => 'Kemasan produk'],
+            ['code' => 'FIN', 'name' => 'Produk Jadi', 'description' => 'Produk siap jual'],
+            ['code' => 'SPARE', 'name' => 'Spare Part', 'description' => 'Komponen mesin'],
+        ];
+
+        foreach ($categories as $cat) {
+            ProductCategory::create($cat);
+        }
     }
 }
