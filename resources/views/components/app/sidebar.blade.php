@@ -1,14 +1,13 @@
 <aside x-show="sidebarOpen"
-       class="w-64 bg-gray-800 text-white flex-shrink-0 overflow-y-auto transition-all duration-300"
-       x-transition:enter="transition ease-in-out duration-300"
-       x-transition:enter-start="-translate-x-full"
-       x-transition:enter-end="translate-x-0">
+    class="w-64 bg-primary-800 text-white flex-shrink-0 overflow-y-auto transition-all duration-300"
+    x-transition:enter="transition ease-in-out duration-300" x-transition:enter-start="-translate-x-full"
+    x-transition:enter-end="translate-x-0">
 
-    <div class="flex items-center justify-between p-4 border-b border-gray-700">
-        <a href="{{ route('dashboard') }}" class="text-xl font-semibold tracking-wide">
-            {{ config('app.name', 'Company MS') }}
+    <div class="flex items-center justify-between p-4 border-b border-primary-700">
+        <a href="{{ route('dashboard') }}" class="text-xl font-semibold tracking-wide text-white">
+            {{ config('app.name', 'CorpConnect') }}
         </a>
-        <button @click="sidebarOpen = false" class="md:hidden text-gray-400 hover:text-white">
+        <button @click="sidebarOpen = false" class="md:hidden text-primary-300 hover:text-white">
             ✕
         </button>
     </div>
@@ -20,8 +19,15 @@
         {{-- HR Modules --}}
         @can('employee.view')
             <x-app.menu-item route="employees.index" icon="👥" label="Karyawan" />
+            <div class="pl-4 ml-2 border-l-2 border-primary-700 space-y-1">
+                <x-app.menu-item route="departments.index" icon="🏢" label="Departemen" />
+                <x-app.menu-item route="positions.index" icon="💼" label="Jabatan" />
+                <x-app.menu-item route="shifts.index" icon="🕒" label="Shift" />
+            </div>
         @endcan
 
+        {{-- SEMUA MENU DI BAWAH INI DIKOMENTARI KARENA BELUM ADA ROUTE --}}
+        {{--
         @can('attendance.view')
             <x-app.menu-item route="attendance.index" icon="📅" label="Absensi" />
         @endcan
@@ -34,9 +40,8 @@
             <x-app.menu-item route="overtime.index" icon="⏰" label="Lembur" />
         @endcan
 
-        {{-- Inventory Module --}}
         @can('inventory.view')
-            <div class="pt-2 mt-2 border-t border-gray-700">
+            <div class="pt-2 mt-2 border-t border-primary-700">
                 <x-app.menu-item route="inventory.products.index" icon="📦" label="Produk" />
                 <x-app.menu-item route="inventory.stock-in.index" icon="📥" label="Barang Masuk" />
                 <x-app.menu-item route="inventory.stock-out.index" icon="📤" label="Barang Keluar" />
@@ -44,28 +49,25 @@
             </div>
         @endcan
 
-        {{-- Reports --}}
         @can('report.view')
-            <div class="pt-2 mt-2 border-t border-gray-700">
+            <div class="pt-2 mt-2 border-t border-primary-700">
                 <x-app.menu-item route="reports.attendance" icon="📊" label="Laporan Absensi" />
                 <x-app.menu-item route="reports.stock" icon="📈" label="Laporan Stok" />
             </div>
         @endcan
 
-        {{-- Settings --}}
         @can('settings.view')
-            <div class="pt-2 mt-2 border-t border-gray-700">
+            <div class="pt-2 mt-2 border-t border-primary-700">
                 <x-app.menu-item route="settings.users.index" icon="👤" label="Pengguna" />
                 <x-app.menu-item route="settings.roles.index" icon="🔑" label="Peran" />
             </div>
         @endcan
+        --}}
     </nav>
 </aside>
 
 {{-- Overlay mobile --}}
-<div x-show="sidebarOpen" @click="sidebarOpen = false"
-     class="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
-     x-transition:enter="transition-opacity ease-linear duration-300"
-     x-transition:enter-start="opacity-0"
-     x-transition:enter-end="opacity-100">
+<div x-show="sidebarOpen" @click="sidebarOpen = false" class="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+    x-transition:enter="transition-opacity ease-linear duration-300" x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100">
 </div>

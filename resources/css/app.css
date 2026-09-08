@@ -1,3 +1,47 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom theme overrides */
+.btn-primary {
+    @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+}
+
+.btn-secondary {
+    @apply bg-secondary-200 text-secondary-800 hover:bg-secondary-300 focus:ring-secondary-400;
+}
+
+.badge-primary {
+    @apply bg-primary-100 text-primary-800;
+}
+
+.badge-success {
+    @apply bg-green-100 text-green-800;
+}
+
+.badge-danger {
+    @apply bg-red-100 text-red-800;
+}
+
+.badge-warning {
+    @apply bg-yellow-100 text-yellow-800;
+}
+
+/* Sidebar active state */
+.sidebar-active {
+    @apply bg-primary-600 text-white;
+}
+
+.sidebar-link {
+    @apply text-secondary-300 hover:bg-primary-700 hover:text-white;
+}
+
+/* Card header */
+.card-header {
+    @apply border-b border-primary-200 bg-primary-50;
+}
+
+/* Table header */
+.table-header {
+    @apply bg-primary-50 text-primary-800;
+}
